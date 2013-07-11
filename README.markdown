@@ -5,7 +5,7 @@ I curate a lot of what I read. And I read a lot. [Pocket](http://www.getpocket.c
 
 However, sometimes I find myself somewhere with no wifi (a plane, the boonies, our office bathroom, etc.) with a few dozen open tabs and no way of getting them into Pocket.
 
-I found a great article [Ryan Toohill](http://blog.ryantoohil.com/2012/03/using-safaris-reading-list-to-feed-instapaper.php) where he wrote a background task for syncing Reading List to Instapaper. This fork is a branch of his code that does the same for Pocket.
+I found a great article by [Ryan Toohill](http://blog.ryantoohil.com/2012/03/using-safaris-reading-list-to-feed-instapaper.php) where he wrote a background task for syncing Reading List to Instapaper. This is a fork of his code that does this for Pocket.
 
 ## Setup
 
@@ -13,9 +13,9 @@ As this app is just a hack, be ready for a bit of effort.
 
 ### RVM
 
-Nokogiri 1.6 dropped support for Ruby 1.8.x and so you have to use 1.9 or 2.0. This app was developed using 1.9.3 and is running fine with 1.9.2.
+Nokogiri 1.6 dropped support for Ruby 1.8.x and so we have to use 1.9 or 2.0, i.e. the version of Ruby that comes with OSX won't do. This app was developed using 1.9.3 and is running fine with 1.9.2, so we'll go for 1.9.2 in the setup instructions.
 
-If you have no idea what I'm talking about you should probably stop right now. Otherwise, install RVM, create a gemset and install your gems.
+If you have no idea what I'm talking about you should probably stop right now. Otherwise, you will need to install RVM & a 1.9 version of Ruby, create a gemset for our app, and then install a few gems. Here's a check list:
 
 * [How to Install RVM](https://rvm.io/rvm/install)
 * Install the appropriate version of Ruby: `rvm install 1.9.2`
@@ -26,12 +26,12 @@ If you have no idea what I'm talking about you should probably stop right now. O
 
 ### Get an access token from Pocket
 
-Pocket uses OAuth2, and a lot of custom names that made it fiddly to work with the `oauth` and `oauth2` gems. To save time, I built a nasty hack. It's a PITA, I wish Pocket supported the 'password' grant type in their implementation of Oauth but they don't, so we have to do this instead.
+Pocket uses [OAuth2](http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified) in an implementation with a lot of custom names that made it fiddly to work with any OAuth gems and the command line. To save time, I built a nasty hack. It's a PITA, I wish Pocket supported the 'password' grant type in their implementation of Oauth but they don't, so we have to do it this way instead.
 
 * Open the file `1.html`. It should download a file called `request` and then redirect you to `2.html`
 * The `request` file should contain a single line that looks like this:
 
-    code=43848dae-f000-1bd2-e434-454997
+    `code=43848dae-f000-1bd2-e434-454997`
 
 * Take the string after the equals sign (in this case `43848dae-f000-1bd2-e434-454997`), cut/paste it into the box on the page `2.html` (which should already be open) and press Submit.
 * If successful, you should be redirected to the Google home page.
@@ -39,7 +39,7 @@ Pocket uses OAuth2, and a lot of custom names that made it fiddly to work with t
 * This will take you to the Pocket website (login if necessary) and ask you to authorize access. (If it doesn't, it usually means you've already provided access.)
 * When you say yes, it will download another file, this time called `authorize` which looks like this:
 
-    access_token=aaaaaaaa-bbbb-cccc-dddd-eeeeee&username=jon-doe
+    `access_token=aaaaaaaa-bbbb-cccc-dddd-eeeeee&username=jon-doe`
 
 * Take the string after the equals sign and before the `&` character (in this case `aaaaaaaa-bbbb-cccc-dddd-eeeeee`). This is your access token.
 
