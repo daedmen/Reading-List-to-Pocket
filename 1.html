@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <form action="https://getpocket.com/v3/oauth/request" method="post" id="myForm">
+      <input type="hidden" name="consumer_key" value="16305-b183e9e83655d260cddc5abc" />
+      <input type="hidden" name="redirect_uri" value="2.html" />
+      <input type="submit" />
+    </form>
+    <script type="text/javascript">
+      document.getElementById('myForm').submit();
+      setTimeout("window.location.href = '2.html'", 3000);
+    </script>
+  </body>
+</html>
