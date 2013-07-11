@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" \
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<dict>
+  <key>Label</key>
+  <string>com.ryantoohil.readinglisttopocket</string>
+  <key>LowPriorityIO</key>
+  <true/>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>Program</key>
+  <string>INSTALLATION_FOLDER/readinglist_to_pocket.rb</string>
+  <key>WatchPaths</key>
+  <array>
+    <string>USER_FOLDER/Library/Safari/Bookmarks.plist</string>
+  </array>
+</dict>
+</plist>
